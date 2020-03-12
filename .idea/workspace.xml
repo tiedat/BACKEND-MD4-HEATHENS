@@ -12,6 +12,13 @@
       <ProjectState />
     </projectState>
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -59,7 +66,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1583982239389</updated>
-      <workItem from="1583982245271" duration="2263000" />
+      <workItem from="1583982245271" duration="2578000" />
     </task>
     <task id="LOCAL-00001" summary="init project Nghia">
       <created>1583984700273</created>
@@ -68,7 +75,14 @@
       <option name="project" value="LOCAL" />
       <updated>1583984700273</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="thu lenh git ctrl K">
+      <created>1583985259163</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1583985259163</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -76,7 +90,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="init project Nghia" />
-    <option name="LAST_COMMIT_MESSAGE" value="init project Nghia" />
+    <MESSAGE value="thu lenh git ctrl K" />
+    <option name="LAST_COMMIT_MESSAGE" value="thu lenh git ctrl K" />
   </component>
   <component name="WindowStateProjectService">
     <state x="137" y="18" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583984627605">
@@ -87,13 +102,13 @@
       <screen x="0" y="0" width="1366" height="728" />
     </state>
     <state x="442" y="166" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1366.728@0.0.1366.728" timestamp="1583984638542" />
-    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1583985217157">
+    <state x="308" y="0" key="CommitChangelistDialog2" timestamp="1583985258239">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1583985217157" />
-    <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1583984708275">
+    <state x="308" y="0" key="CommitChangelistDialog2/0.0.1366.728@0.0.1366.728" timestamp="1583985258239" />
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2" timestamp="1583985310926">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1583984708275" />
+    <state x="275" y="96" key="Vcs.Push.Dialog.v2/0.0.1366.728@0.0.1366.728" timestamp="1583985310926" />
   </component>
 </project>
