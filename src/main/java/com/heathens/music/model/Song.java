@@ -1,5 +1,6 @@
 package com.heathens.music.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -41,8 +42,9 @@ public class Song {
             inverseJoinColumns = @JoinColumn(name = "playlist_id"))
     private List<Playlist> playlists;
 
+    @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_username")
     private User user;
 
     @ManyToMany

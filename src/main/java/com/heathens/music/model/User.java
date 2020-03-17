@@ -5,7 +5,7 @@ import com.heathens.music.model.enumric.Gender;
 import lombok.Data;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -14,7 +14,7 @@ import java.util.List;
 public class User {
 
     @Id
-    private String userName;
+    private String username;
 
     @Column
     private String password;
@@ -26,12 +26,12 @@ public class User {
     private Gender gender;
 
     @Column
-    private Date dayOfBirth;
+    private LocalDate dayOfBirth;
 
     @Column(unique = true)
     private String email;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     private List<Playlist> playlistList;
 
     @OneToMany(mappedBy = "user")
