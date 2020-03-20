@@ -22,7 +22,6 @@ public class UserController {
     @GetMapping("")
     public ResponseEntity<List<User>> getAllUser() {
         List<User> users = userService.findAll();
-        users.forEach(User::getSongList);
         return new ResponseEntity<>(users, HttpStatus.OK);
     }
 
@@ -30,7 +29,6 @@ public class UserController {
     public ResponseEntity<Optional<User>> getSong(@PathVariable("username") String username) {
         try {
             Optional<User> song = userService.findByUsername(username);
-            song.ifPresent(User::getSongList);
             return new ResponseEntity<>(song, HttpStatus.OK);
         } catch (Exception ex) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);

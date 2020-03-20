@@ -49,7 +49,7 @@ public class SongController {
 
     /* ---------------- UPDATE SONG ------------------------ */
 
-    @PutMapping
+    @PatchMapping
     public ResponseEntity<ServiceResult> updateSong(@RequestBody Song song) {
         return new ResponseEntity<>(songService.update(song), HttpStatus.OK);
     }

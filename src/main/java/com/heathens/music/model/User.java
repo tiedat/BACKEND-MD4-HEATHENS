@@ -14,6 +14,10 @@ import java.util.List;
 public class User {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @Column(unique = true)
     private String username;
 
     @Column
@@ -34,7 +38,5 @@ public class User {
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     private List<Playlist> playlistList;
 
-    @OneToMany(mappedBy = "user")
-    private List<Song> songList;
 
 }

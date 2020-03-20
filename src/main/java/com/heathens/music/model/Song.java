@@ -36,15 +36,9 @@ public class Song {
             inverseJoinColumns = @JoinColumn(name = "tag_id"))
     private List<Tag> tagList;
 
-    @ManyToMany
-    @JoinTable(name = "playlist_song",
-            joinColumns = @JoinColumn(name = "song_id"),
-            inverseJoinColumns = @JoinColumn(name = "playlist_id"))
-    private List<Playlist> playlists;
 
-    @JsonIgnore
     @ManyToOne
-    @JoinColumn(name = "user_username")
+    @JoinColumn(name = "user_id")
     private User user;
 
     @ManyToMany
