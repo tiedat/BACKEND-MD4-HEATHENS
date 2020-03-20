@@ -8,7 +8,7 @@ import java.util.List;
 
 @Entity
 @Data
-@Table(name = "song")
+@Table(name = "user")
 public class Song {
 
     @Id
@@ -31,8 +31,8 @@ public class Song {
     private Long numberOfPlays;
 
     @ManyToMany
-    @JoinTable(name = "song_tag",
-            joinColumns = @JoinColumn(name = "song_id"),
+    @JoinTable(name = "user_tag",
+            joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "tag_id"))
     private List<Tag> tagList;
 
@@ -42,8 +42,8 @@ public class Song {
     private User user;
 
     @ManyToMany
-    @JoinTable(name = "artist_song",
-            joinColumns = @JoinColumn(name = "song_id"),
+    @JoinTable(name = "artist_user",
+            joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "artist_id"))
     private List<Artist> artistList;
 }

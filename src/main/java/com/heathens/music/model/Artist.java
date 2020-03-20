@@ -25,7 +25,7 @@ public class Artist {
     private Long numberOfPlays;
 
     @ManyToMany(mappedBy = "artistList")
-    private List<Song> songList;
+    private List<Song> userList;
 
 
 }

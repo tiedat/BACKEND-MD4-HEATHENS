@@ -3,6 +3,7 @@ package com.heathens.music.controller;
 
 import com.heathens.music.model.User;
 import com.heathens.music.service.IUserService;
+import com.heathens.music.service.ServiceResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,19 +20,39 @@ public class UserController {
     @Autowired
     IUserService userService;
 
-    @GetMapping("")
-    public ResponseEntity<List<User>> getAllUser() {
-        List<User> users = userService.findAll();
-        return new ResponseEntity<>(users, HttpStatus.OK);
+    /* ---------------- GET ALL USER ------------------------ */
+
+    @GetMapping
+    public ResponseEntity<ServiceResult> getAllUser() {
+        return new ResponseEntity<>(userService.findAll(), HttpStatus.OK);
     }
 
-    @GetMapping("/{username}")
-    public ResponseEntity<Optional<User>> getSong(@PathVariable("username") String username) {
-        try {
-            Optional<User> song = userService.findByUsername(username);
-            return new ResponseEntity<>(song, HttpStatus.OK);
-        } catch (Exception ex) {
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-        }
+    /* ---------------- GET USER BY ID ------------------------ */
+
+    @GetMapping("/{id}")
+    public ResponseEntity<ServiceResult> getUser(@PathVariable("id") Long id) {
+        return new ResponseEntity<>(userService.findById(id), HttpStatus.OK);
     }
+
+    /* ---------------- DELETE USER ------------------------ */
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<ServiceResult> deleteUser(@PathVariable("id") Long id) {
+        return new ResponseEntity<>(userService.delete(id), HttpStatus.OK);
+    }
+
+    /* ---------------- CREATE USER ------------------------ */
+
+    @PostMapping
+    public ResponseEntity<ServiceResult> createUser(@RequestBody User user) {
+        return new ResponseEntity<>(userService.create(user), HttpStatus.OK);
+    }
+
+    /* ---------------- UPDATE USER ------------------------ */
+
+    @PatchMapping
+    public ResponseEntity<ServiceResult> updateUser(@RequestBody User user) {
+        return new ResponseEntity<>(userService.update(user), HttpStatus.OK);
+    }
+
 }

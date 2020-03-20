@@ -3,7 +3,6 @@ package com.heathens.music.controller;
 import com.heathens.music.model.Song;
 import com.heathens.music.service.ISongService;
 import com.heathens.music.service.ServiceResult;
-import com.sun.org.apache.regexp.internal.RE;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -43,15 +42,15 @@ public class SongController {
     /* ---------------- CREATE SONG ------------------------ */
 
     @PostMapping
-    public ResponseEntity<ServiceResult> createSong(@RequestBody Song song) {
-        return new ResponseEntity<>(songService.create(song), HttpStatus.OK);
+    public ResponseEntity<ServiceResult> createSong(@RequestBody Song user) {
+        return new ResponseEntity<>(songService.create(user), HttpStatus.OK);
     }
 
     /* ---------------- UPDATE SONG ------------------------ */
 
     @PatchMapping
-    public ResponseEntity<ServiceResult> updateSong(@RequestBody Song song) {
-        return new ResponseEntity<>(songService.update(song), HttpStatus.OK);
+    public ResponseEntity<ServiceResult> updateSong(@RequestBody Song user) {
+        return new ResponseEntity<>(songService.update(user), HttpStatus.OK);
     }
 
 }

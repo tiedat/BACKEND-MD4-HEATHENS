@@ -26,7 +26,7 @@ public class Playlist {
     private User user;
 
     @ManyToMany
-    private List<Song> songList;
+    private List<Song> userList;
 
 
 }
