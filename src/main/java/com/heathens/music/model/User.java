@@ -35,8 +35,4 @@ public class User {
     @Column(unique = true)
     private String email;
 
-    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
-    private List<Playlist> playlistList;
-
-
 }

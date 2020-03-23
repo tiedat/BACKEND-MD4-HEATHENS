@@ -17,6 +17,7 @@ public class Tag {
 
     private String nameTag;
 
-    @ManyToMany(mappedBy = "tagList")
-    private List<Song> userList;
+    @ManyToMany(mappedBy = "tags")
+    private List<Song> songList;
+
 }

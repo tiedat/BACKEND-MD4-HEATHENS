@@ -1,6 +1,5 @@
 package com.heathens.music.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -8,7 +7,7 @@ import java.util.List;
 
 @Entity
 @Data
-@Table(name = "user")
+@Table(name = "song")
 public class Song {
 
     @Id
@@ -31,19 +30,14 @@ public class Song {
     private Long numberOfPlays;
 
     @ManyToMany
-    @JoinTable(name = "user_tag",
-            joinColumns = @JoinColumn(name = "user_id"),
+    @JoinTable(name = "song_tag",
+            joinColumns = @JoinColumn(name = "song_id"),
             inverseJoinColumns = @JoinColumn(name = "tag_id"))
-    private List<Tag> tagList;
+    private List<Tag> tags;
 
 
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToMany
-    @JoinTable(name = "artist_user",
-            joinColumns = @JoinColumn(name = "user_id"),
-            inverseJoinColumns = @JoinColumn(name = "artist_id"))
-    private List<Artist> artistList;
 }
