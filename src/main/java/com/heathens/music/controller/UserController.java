@@ -20,18 +20,12 @@ public class UserController {
     @Autowired
     IUserService userService;
 
-    /* ---------------- GET ALL USER ------------------------ */
+
+    /* ---------------- GET USER BY USERNAME ------------------------ */
 
     @GetMapping
-    public ResponseEntity<ServiceResult> getAllUser() {
-        return new ResponseEntity<>(userService.findAll(), HttpStatus.OK);
-    }
-
-    /* ---------------- GET USER BY ID ------------------------ */
-
-    @GetMapping("/{id}")
-    public ResponseEntity<ServiceResult> getUser(@PathVariable("id") Long id) {
-        return new ResponseEntity<>(userService.findById(id), HttpStatus.OK);
+    public ResponseEntity<ServiceResult> getUser(@RequestParam("username") String username) {
+        return new ResponseEntity<>(userService.findByUsernameIgnoreCase(username), HttpStatus.OK);
     }
 
     /* ---------------- DELETE USER ------------------------ */

@@ -1,9 +1,10 @@
 package com.heathens.music.model;
 
-
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -15,9 +16,11 @@ public class Tag {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Column
     private String nameTag;
 
     @ManyToMany(mappedBy = "tags")
-    private List<Song> songList;
+    @JsonBackReference
+    private List<Song> songList = new ArrayList<>();
 
 }

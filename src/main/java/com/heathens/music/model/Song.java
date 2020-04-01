@@ -1,8 +1,11 @@
 package com.heathens.music.model;
 
+import lombok.AccessLevel;
 import lombok.Data;
+import lombok.Getter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -33,11 +36,13 @@ public class Song {
     @JoinTable(name = "song_tag",
             joinColumns = @JoinColumn(name = "song_id"),
             inverseJoinColumns = @JoinColumn(name = "tag_id"))
-    private List<Tag> tags;
+    private List<Tag> tags = new ArrayList<>();
 
 
     @ManyToOne
+    @Getter(AccessLevel.NONE)
     @JoinColumn(name = "user_id")
     private User user;
+
 
 }
