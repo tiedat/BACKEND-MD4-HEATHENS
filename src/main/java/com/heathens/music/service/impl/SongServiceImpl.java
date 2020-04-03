@@ -5,6 +5,7 @@ import com.heathens.music.model.Tag;
 import com.heathens.music.model.User;
 import com.heathens.music.repository.ISongRepo;
 import com.heathens.music.repository.ITagRepo;
+import com.heathens.music.repository.IUserRepo;
 import com.heathens.music.service.ISongService;
 import com.heathens.music.service.ServiceResult;
 import com.heathens.music.service.StatusService;
@@ -12,6 +13,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
+import java.util.Set;
 
 
 @Service
@@ -23,6 +26,9 @@ public class SongServiceImpl implements ISongService {
     @Autowired
     private ITagRepo tagRepo;
 
+    @Autowired
+    private IUserRepo userRepo;
+
 
     @Override
     public ServiceResult findAll() {
@@ -32,9 +38,15 @@ public class SongServiceImpl implements ISongService {
     }
 
     @Override
-    public ServiceResult findAllByUser(User user) {
+    public ServiceResult findAllSongByUsername(String username) {
         ServiceResult sr = new ServiceResult();
-        sr.setData(songRepo.findAllByUser(user));
+        Optional<User> user = userRepo.findByUsernameIgnoreCase(username);
+        if (!user.isPresent()) {
+            sr.setMessage("User Not Found, No Song Found");
+            return sr;
+        } else {
+            sr.setData(songRepo.findAllByUser(user));
+        }
         return sr;
     }
 
@@ -62,12 +74,17 @@ public class SongServiceImpl implements ISongService {
 
     @Override
     public ServiceResult create(Song song) {
-        List<Tag> tags = song.getTags();
+        Set<Tag> tags = song.getTags();
+
         for (Tag tag : tags) {
-            if (!tagRepo.findByNameTag(tag.getNameTag()).isPresent()) {
-                tagRepo.save(tag);
+            Tag tagFind = tagRepo.findByNameTag(tag.getNameTag());
+            if (tagFind == null) {
+                Tag newTag = tagRepo.save(tag);  // create tag not exist
+                tag.setId(newTag.getId()); // set id cho tag
+            } else {
+                tag.setId(tagFind.getId()); // set id cho tag
             }
-        } // create tag not exist
+        }
 
         ServiceResult sr = new ServiceResult();
         sr.setData(songRepo.save(song));

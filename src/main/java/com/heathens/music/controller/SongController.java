@@ -43,8 +43,8 @@ public class SongController {
     /* ---------------- GET ALL MY SONG ------------------------ */
 
     @GetMapping("/mysongs")
-    public ResponseEntity<ServiceResult> getAllSongByUser(@RequestBody User user) {
-        return new ResponseEntity<>(songService.findAllByUser(user), HttpStatus.OK);
+    public ResponseEntity<ServiceResult> getAllSongByUser(@RequestParam("username") String username) {
+        return new ResponseEntity<>(songService.findAllSongByUsername(username), HttpStatus.OK);
     }
 
 

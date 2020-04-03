@@ -5,8 +5,8 @@ import lombok.Data;
 import lombok.Getter;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Data
@@ -36,7 +36,7 @@ public class Song {
     @JoinTable(name = "song_tag",
             joinColumns = @JoinColumn(name = "song_id"),
             inverseJoinColumns = @JoinColumn(name = "tag_id"))
-    private List<Tag> tags = new ArrayList<>();
+    private Set<Tag> tags = new HashSet<>();
 
 
     @ManyToOne
