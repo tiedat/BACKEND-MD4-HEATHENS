@@ -121,4 +121,11 @@ public class SongServiceImpl implements ISongService {
         }
         return sr;
     }
+
+    @Override
+    public ServiceResult findTop20Song() {
+        ServiceResult sr = new ServiceResult();
+        sr.setData(this.songRepo.findTop20Song());
+        return sr;
+    }
 }

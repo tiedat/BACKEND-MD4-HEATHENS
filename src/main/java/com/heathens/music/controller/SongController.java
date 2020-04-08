@@ -69,4 +69,9 @@ public class SongController {
         return new ResponseEntity<>(songService.update(user), HttpStatus.OK);
     }
 
+    @GetMapping("/songs/top20")
+    public ResponseEntity<ServiceResult> findTop20Song() {
+        return new ResponseEntity<>(songService.findTop20Song(), HttpStatus.OK);
+    }
+
 }

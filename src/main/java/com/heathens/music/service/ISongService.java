@@ -11,5 +11,6 @@ public interface ISongService {
     ServiceResult findAllSongByUsername(String username);
     ServiceResult findTop10ByNameContains(String textSearch);
 
+    ServiceResult findTop20Song();
 
 }
