@@ -41,7 +41,7 @@ public class Song {
 
     @ManyToOne
     @Getter(AccessLevel.NONE)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", updatable = false)
     private User user;
 
 
