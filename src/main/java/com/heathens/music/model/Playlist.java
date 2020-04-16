@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.Getter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -31,6 +32,7 @@ public class Playlist {
     @ManyToMany
     private List<Song> songs;
 
-
+    @OneToMany
+    private List<CommentPlaylist> cmtPlaylists = new ArrayList<>();
 
 }

@@ -5,7 +5,9 @@ import lombok.Data;
 import lombok.Getter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -44,5 +46,7 @@ public class Song {
     @JoinColumn(name = "user_id", updatable = false)
     private User user;
 
+    @OneToMany
+    private List<CommentSong> cmtSongs = new ArrayList<>();
 
 }

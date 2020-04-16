@@ -2,7 +2,6 @@ package com.heathens.music.service;
 
 
 import com.heathens.music.model.Playlist;
-import com.heathens.music.model.Song;
 
 public interface IPlaylistService {
     ServiceResult findAll();
@@ -12,6 +11,4 @@ public interface IPlaylistService {
     ServiceResult delete(Long id);
     ServiceResult findAllPlaylistByUsername(String username);
     ServiceResult findTop10ByNameContains(String textSearch);
-    ServiceResult addSongToPlaylist(Song song);
-    ServiceResult removeSongFromPlaylist(Song song);
 }

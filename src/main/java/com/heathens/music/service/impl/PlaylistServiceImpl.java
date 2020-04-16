@@ -1,7 +1,6 @@
 package com.heathens.music.service.impl;
 
 import com.heathens.music.model.Playlist;
-import com.heathens.music.model.Song;
 import com.heathens.music.model.User;
 import com.heathens.music.repository.IPlaylistRepo;
 import com.heathens.music.repository.IUserRepo;
@@ -99,15 +98,4 @@ public class PlaylistServiceImpl implements IPlaylistService {
         return sr;
     }
 
-    @Override
-    public ServiceResult addSongToPlaylist(Song song) {
-        ServiceResult sr = new ServiceResult();
-        return sr;
-    }
-
-    @Override
-    public ServiceResult removeSongFromPlaylist(Song song) {
-        ServiceResult sr = new ServiceResult();
-        return sr;
-    }
 }
