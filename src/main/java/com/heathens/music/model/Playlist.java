@@ -22,10 +22,10 @@ public class Playlist {
     private String name;
 
     @Column
-    private String description;
+    private Long numberOfPlays;
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", updatable = false)
     @Getter(AccessLevel.NONE)
     private User user;
 
