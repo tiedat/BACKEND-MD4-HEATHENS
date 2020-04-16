@@ -1,9 +1,12 @@
 package com.heathens.music.model;
 
 
+import lombok.AccessLevel;
 import lombok.Data;
+import lombok.Getter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -23,10 +26,13 @@ public class Playlist {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @Getter(AccessLevel.NONE)
     private User user;
 
     @ManyToMany
     private List<Song> songs;
 
+    @OneToMany
+    private List<CommentPlaylist> cmtPlaylists = new ArrayList<>();
 
 }
