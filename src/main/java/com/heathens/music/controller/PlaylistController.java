@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin("*")
-@RequestMapping("/api/playlists")
+@RequestMapping("/api")
 public class PlaylistController {
 
     @Autowired

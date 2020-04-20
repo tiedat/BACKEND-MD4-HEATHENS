@@ -1,10 +1,12 @@
 package com.heathens.music.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Getter;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -33,6 +35,10 @@ public class Song {
 
     @Column
     private Long numberOfPlays;
+
+    @Column(updatable = false)
+    @JsonIgnore
+    private LocalDateTime initTime = LocalDateTime.now();
 
     @ManyToMany
     @JoinTable(name = "song_tag",
