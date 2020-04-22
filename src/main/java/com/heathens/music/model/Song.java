@@ -1,11 +1,15 @@
 package com.heathens.music.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Getter;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -21,7 +25,7 @@ public class Song {
     private String name;
 
     @Column
-    private String descriptionSong;
+    private String description;
 
     @Column
     private String fileMp3;
@@ -30,7 +34,11 @@ public class Song {
     private String image;
 
     @Column
-    private Long numberOfPlays;
+    private Long numberOfPlays = 0L;
+
+    @Column(updatable = false)
+    @JsonIgnore
+    private LocalDateTime initTime = LocalDateTime.now();
 
     @ManyToMany
     @JoinTable(name = "song_tag",
@@ -41,8 +49,10 @@ public class Song {
 
     @ManyToOne
     @Getter(AccessLevel.NONE)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", updatable = false)
     private User user;
 
+    @OneToMany
+    private List<CommentSong> cmtSongs = new ArrayList<>();
 
 }

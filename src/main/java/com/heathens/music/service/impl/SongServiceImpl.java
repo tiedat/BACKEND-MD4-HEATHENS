@@ -93,12 +93,22 @@ public class SongServiceImpl implements ISongService {
 
     @Override
     public ServiceResult update(Song song) {
-//        List<Tag> tags = song.getTags();
-//        for (Tag tag : tags) {
-//            if (!tagRepo.findByNameTag(tag.getNameTag()).isPresent()) {
-//                tagRepo.save(tag);
-//            } else
-//        }
+        Set<Tag> fixedTags = song.getTags(); // new tags and tags to delete
+        Song songFind = songRepo.findById(song.getId()).get();
+
+        for (Tag tag : fixedTags) {
+            if (tag.getId() == null) {
+                Tag tagFind = tagRepo.findByNameTag(tag.getNameTag());
+                if (tagFind == null) {
+                    Tag newTag = tagRepo.save(tag);  // create tag not exist
+                    songFind.getTags().add(newTag); // add tag to tags(song)
+                } else {
+                    songFind.getTags().remove(tag); //remove tag
+                }
+            } else {
+
+            }
+        }
         ServiceResult sr = new ServiceResult();
         if (!songRepo.findById(song.getId()).isPresent()) {
             sr.setStatus(StatusService.FAILED);
