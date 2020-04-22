@@ -24,13 +24,13 @@ public class Playlist {
     private String name;
 
     @Column
-    private Long numberOfPlays;
+    private String description;
+
+    @Column
+    private Long numberOfPlays = 0L;
 
     @Column
     private String image;
-
-    @Column
-    private Long numberOfPlays;
 
     @Column(updatable = false)
     @JsonIgnore
