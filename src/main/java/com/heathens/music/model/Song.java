@@ -25,7 +25,7 @@ public class Song {
     private String name;
 
     @Column
-    private String descriptionSong;
+    private String description;
 
     @Column
     private String fileMp3;
@@ -34,7 +34,7 @@ public class Song {
     private String image;
 
     @Column
-    private Long numberOfPlays;
+    private Long numberOfPlays = 0L;
 
     @Column(updatable = false)
     @JsonIgnore
