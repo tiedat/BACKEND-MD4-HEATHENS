@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AccessLevel;
 import lombok.Data;
 import lombok.Getter;
+import org.springframework.beans.factory.annotation.Value;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -37,7 +38,6 @@ public class Song {
     private Long numberOfPlays = 0L;
 
     @Column(updatable = false)
-    @JsonIgnore
     private LocalDateTime initTime = LocalDateTime.now();
 
     @ManyToMany

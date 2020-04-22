@@ -18,4 +18,7 @@ public interface ISongRepo extends JpaRepository<Song, Long> {
 
     @Query(value="select * from song where number_of_plays > 0 order by number_of_plays desc limit 20", nativeQuery = true)
     List<Song> findTop20Song();
+
+    @Query(value="select * from song order by init_time desc limit 20", nativeQuery = true)
+    List<Song> find20NewestSong();
 }
