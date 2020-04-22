@@ -1,4 +1,4 @@
 package com.heathens.music.model;
 
-public class RateSong {
+public class    RateSong {
 }
