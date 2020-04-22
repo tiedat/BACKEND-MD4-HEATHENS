@@ -24,7 +24,7 @@ public class Playlist {
     private String name;
 
     @Column
-    private String description;
+    private Long numberOfPlays;
 
     @Column
     private String image;
@@ -37,7 +37,7 @@ public class Playlist {
     private LocalDateTime initTime = LocalDateTime.now();
 
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", updatable = false)
     @Getter(AccessLevel.NONE)
     private User user;
 
