@@ -1,6 +1,7 @@
 package com.heathens.music.service.impl;
 
 import com.heathens.music.model.CommentPlaylist;
+import com.heathens.music.model.CommentSong;
 import com.heathens.music.model.Playlist;
 import com.heathens.music.repository.ICommentPlaylistRepo;
 import com.heathens.music.service.ICommentService;
@@ -14,6 +15,14 @@ public class CommentPlaylistServiceImpl implements ICommentService<CommentPlayli
 
     @Autowired
     ICommentPlaylistRepo commentPlaylistRepo;
+
+    @Override
+    public ServiceResult findAll() {
+        ServiceResult sr = new ServiceResult();
+        Iterable<CommentPlaylist> commentPlaylists = commentPlaylistRepo.findAll();
+        sr.setData(commentPlaylists);
+        return sr;
+    }
 
     @Override
     public ServiceResult findById(Long id) {

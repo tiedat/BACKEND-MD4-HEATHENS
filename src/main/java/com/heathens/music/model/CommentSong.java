@@ -1,9 +1,7 @@
 package com.heathens.music.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import lombok.AccessLevel;
 import lombok.Data;
-import lombok.Getter;
 
 import javax.persistence.*;
 
@@ -25,7 +23,7 @@ public class CommentSong {
     private Song song;
 
     @ManyToOne
-    @Getter(AccessLevel.NONE)
+    @JsonBackReference
     @JoinColumn(name = "user_id", updatable = false)
     private User user;
 

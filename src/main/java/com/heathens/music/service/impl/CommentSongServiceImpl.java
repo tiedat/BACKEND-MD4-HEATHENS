@@ -8,11 +8,20 @@ import com.heathens.music.service.StatusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
 @Service("cmtSong")
 public class CommentSongServiceImpl implements ICommentService<CommentSong> {
 
     @Autowired
     ICommentSongRepo commentSongRepo;
+
+    @Override
+    public ServiceResult findAll() {
+        ServiceResult sr = new ServiceResult();
+        Iterable<CommentSong> commentSongs = commentSongRepo.findAll();
+        sr.setData(commentSongs);
+        return sr;
+    }
 
     @Override
     public ServiceResult findById(Long id) {

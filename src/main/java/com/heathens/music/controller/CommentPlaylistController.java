@@ -19,10 +19,18 @@ public class CommentPlaylistController {
     @Qualifier("cmtPlaylist")
     ICommentService<CommentPlaylist> cmtPlaylistService;
 
+
+    /* ---------------- GET ALL CMTPLAYLIST  ------------------------ */
+
+    @GetMapping
+    public ResponseEntity<ServiceResult> getAllCmtPlaylist() {
+        return new ResponseEntity<>(cmtPlaylistService.findAll(), HttpStatus.OK);
+    }
+
     /* ---------------- GET CMTPLAYLIST BY ID ------------------------ */
 
     @GetMapping("/{id}")
-    public ResponseEntity<ServiceResult> getSong(@PathVariable("id") Long id) {
+    public ResponseEntity<ServiceResult> getCmtPlaylist(@PathVariable("id") Long id) {
         return new ResponseEntity<>(cmtPlaylistService.findById(id), HttpStatus.OK);
     }
 
@@ -30,21 +38,21 @@ public class CommentPlaylistController {
     /* ---------------- DELETE CMTPLAYLIST ------------------------ */
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<ServiceResult> deleteSong(@PathVariable("id") Long id) {
+    public ResponseEntity<ServiceResult> deleteCmtPlaylist(@PathVariable("id") Long id) {
         return new ResponseEntity<>(cmtPlaylistService.delete(id), HttpStatus.OK);
     }
 
     /* ---------------- CREATE CMTPLAYLIST ------------------------ */
 
     @PostMapping
-    public ResponseEntity<ServiceResult> createSong(@RequestBody CommentPlaylist cmtPlaylist) {
+    public ResponseEntity<ServiceResult> createCmtPlaylist(@RequestBody CommentPlaylist cmtPlaylist) {
         return new ResponseEntity<>(cmtPlaylistService.create(cmtPlaylist), HttpStatus.OK);
     }
 
     /* ---------------- UPDATE CMTPLAYLIST ------------------------ */
 
     @PatchMapping
-    public ResponseEntity<ServiceResult> updateSong(@RequestBody CommentPlaylist cmtPlaylist) {
+    public ResponseEntity<ServiceResult> updateCmtPlaylist(@RequestBody CommentPlaylist cmtPlaylist) {
         return new ResponseEntity<>(cmtPlaylistService.update(cmtPlaylist), HttpStatus.OK);
     }
 

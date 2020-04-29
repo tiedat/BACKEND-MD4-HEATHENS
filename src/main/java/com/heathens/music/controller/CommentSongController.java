@@ -20,10 +20,17 @@ public class CommentSongController {
     @Qualifier("cmtSong")
     ICommentService<CommentSong> cmtSongService;
 
+    /* ---------------- GET ALL CMTSONG ------------------------ */
+
+    @GetMapping
+    public ResponseEntity<ServiceResult> getAllCmtSong() {
+        return new ResponseEntity<>(cmtSongService.findAll(), HttpStatus.OK);
+    }
+
     /* ---------------- GET CMTSONG BY ID ------------------------ */
 
     @GetMapping("/{id}")
-    public ResponseEntity<ServiceResult> getSong(@PathVariable("id") Long id) {
+    public ResponseEntity<ServiceResult> getCmtSong(@PathVariable("id") Long id) {
         return new ResponseEntity<>(cmtSongService.findById(id), HttpStatus.OK);
     }
 
@@ -31,21 +38,21 @@ public class CommentSongController {
     /* ---------------- DELETE CMTSONG ------------------------ */
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<ServiceResult> deleteSong(@PathVariable("id") Long id) {
+    public ResponseEntity<ServiceResult> deleteCmtSong(@PathVariable("id") Long id) {
         return new ResponseEntity<>(cmtSongService.delete(id), HttpStatus.OK);
     }
 
     /* ---------------- CREATE CMTSONG ------------------------ */
 
     @PostMapping
-    public ResponseEntity<ServiceResult> createSong(@RequestBody CommentSong cmtSong) {
+    public ResponseEntity<ServiceResult> createCmtSong(@RequestBody CommentSong cmtSong) {
         return new ResponseEntity<>(cmtSongService.create(cmtSong), HttpStatus.OK);
     }
 
     /* ---------------- UPDATE CMTSONG ------------------------ */
 
     @PatchMapping
-    public ResponseEntity<ServiceResult> updateSong(@RequestBody CommentSong cmtSong) {
+    public ResponseEntity<ServiceResult> updateCmtSong(@RequestBody CommentSong cmtSong) {
         return new ResponseEntity<>(cmtSongService.update(cmtSong), HttpStatus.OK);
     }
 
