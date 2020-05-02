@@ -1,6 +1,7 @@
 package com.heathens.music.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -18,12 +19,12 @@ public class CommentSong {
     private String content;
 
     @ManyToOne
-    @JsonBackReference
+    @JsonManagedReference
     @JoinColumn(name = "song_id", updatable = false)
     private Song song;
 
     @ManyToOne
-    @JsonBackReference
+    @JsonManagedReference
     @JoinColumn(name = "user_id", updatable = false)
     private User user;
 

@@ -44,7 +44,5 @@ public class Playlist {
     @ManyToMany
     private List<Song> songs;
 
-    @OneToMany
-    private List<CommentPlaylist> cmtPlaylists = new ArrayList<>();
 
 }

@@ -52,7 +52,5 @@ public class Song {
     @JoinColumn(name = "user_id", updatable = false)
     private User user;
 
-    @OneToMany
-    private List<CommentSong> cmtSongs = new ArrayList<>();
 
 }
