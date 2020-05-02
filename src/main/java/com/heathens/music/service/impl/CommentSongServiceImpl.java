@@ -1,12 +1,16 @@
 package com.heathens.music.service.impl;
 
 import com.heathens.music.model.CommentSong;
+import com.heathens.music.model.Song;
 import com.heathens.music.repository.ICommentSongRepo;
+import com.heathens.music.repository.ISongRepo;
 import com.heathens.music.service.ICommentService;
 import com.heathens.music.service.ServiceResult;
 import com.heathens.music.service.StatusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 
 @Service("cmtSong")
@@ -15,11 +19,19 @@ public class CommentSongServiceImpl implements ICommentService<CommentSong> {
     @Autowired
     ICommentSongRepo commentSongRepo;
 
+    @Autowired
+    ISongRepo songRepo;
+
     @Override
-    public ServiceResult findAll() {
+    public ServiceResult findAll(Long songId) {
         ServiceResult sr = new ServiceResult();
-        Iterable<CommentSong> commentSongs = commentSongRepo.findAll();
-        sr.setData(commentSongs);
+        Optional<Song> song = songRepo.findById(songId);
+        if (song.isPresent()) {
+            Iterable<CommentSong> commentSongs = commentSongRepo.findAllBySong(song);
+            sr.setData(commentSongs);
+        } else {
+            sr.setMessage("Song Not Found");
+        }
         return sr;
     }
 

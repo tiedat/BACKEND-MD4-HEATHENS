@@ -4,11 +4,14 @@ import com.heathens.music.model.CommentPlaylist;
 import com.heathens.music.model.CommentSong;
 import com.heathens.music.model.Playlist;
 import com.heathens.music.repository.ICommentPlaylistRepo;
+import com.heathens.music.repository.IPlaylistRepo;
 import com.heathens.music.service.ICommentService;
 import com.heathens.music.service.ServiceResult;
 import com.heathens.music.service.StatusService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service("cmtPlaylist")
 public class CommentPlaylistServiceImpl implements ICommentService<CommentPlaylist> {
@@ -16,11 +19,19 @@ public class CommentPlaylistServiceImpl implements ICommentService<CommentPlayli
     @Autowired
     ICommentPlaylistRepo commentPlaylistRepo;
 
+    @Autowired
+    IPlaylistRepo playlistRepo;
+
     @Override
-    public ServiceResult findAll() {
+    public ServiceResult findAll(Long playlistId) {
         ServiceResult sr = new ServiceResult();
-        Iterable<CommentPlaylist> commentPlaylists = commentPlaylistRepo.findAll();
-        sr.setData(commentPlaylists);
+        Optional<Playlist> playlist = playlistRepo.findById(playlistId);
+        if (playlist.isPresent()) {
+            Iterable<CommentSong> commentSongs = commentPlaylistRepo.findAllByPlaylist(playlist);
+            sr.setData(commentSongs);
+        } else {
+            sr.setMessage("Song Not Found");
+        }
         return sr;
     }
 

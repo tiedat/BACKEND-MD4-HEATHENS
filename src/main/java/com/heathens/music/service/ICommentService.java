@@ -1,7 +1,7 @@
 package com.heathens.music.service;
 
 public interface ICommentService<T> {
-    ServiceResult findAll();
+    ServiceResult findAll(Long id);
     ServiceResult findById(Long id);
     ServiceResult create(T object);
     ServiceResult update(T object);

@@ -23,8 +23,8 @@ public class CommentPlaylistController {
     /* ---------------- GET ALL CMTPLAYLIST  ------------------------ */
 
     @GetMapping
-    public ResponseEntity<ServiceResult> getAllCmtPlaylist() {
-        return new ResponseEntity<>(cmtPlaylistService.findAll(), HttpStatus.OK);
+    public ResponseEntity<ServiceResult> getAllCmtPlaylist(@RequestParam("idPlaylist") Long idPlaylist) {
+        return new ResponseEntity<>(cmtPlaylistService.findAll(idPlaylist), HttpStatus.OK);
     }
 
     /* ---------------- GET CMTPLAYLIST BY ID ------------------------ */

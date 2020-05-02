@@ -23,8 +23,8 @@ public class CommentSongController {
     /* ---------------- GET ALL CMTSONG ------------------------ */
 
     @GetMapping
-    public ResponseEntity<ServiceResult> getAllCmtSong() {
-        return new ResponseEntity<>(cmtSongService.findAll(), HttpStatus.OK);
+    public ResponseEntity<ServiceResult> getAllBySong(@RequestParam("idSong") Long idSong) {
+        return new ResponseEntity<>(cmtSongService.findAll(idSong), HttpStatus.OK);
     }
 
     /* ---------------- GET CMTSONG BY ID ------------------------ */
