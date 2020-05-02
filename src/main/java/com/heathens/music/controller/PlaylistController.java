@@ -55,14 +55,14 @@ public class PlaylistController {
     /* ---------------- CREATE MY PLAYLIST ------------------------ */
 
     @PostMapping("/myplaylists")
-    public ResponseEntity<ServiceResult> createPlaylist(@RequestBody Playlist user) {
-        return new ResponseEntity<>(playlistService.create(user), HttpStatus.OK);
+    public ResponseEntity<ServiceResult> createPlaylist(@RequestBody Playlist playlist) {
+        return new ResponseEntity<>(playlistService.create(playlist), HttpStatus.OK);
     }
 
     /* ---------------- UPDATE MY PLAYLIST ------------------------ */
 
     @PatchMapping("/myplaylists")
-    public ResponseEntity<ServiceResult> updatePlaylist(@RequestBody Playlist user) {
-        return new ResponseEntity<>(playlistService.update(user), HttpStatus.OK);
+    public ResponseEntity<ServiceResult> updatePlaylist(@RequestBody Playlist playlist) {
+        return new ResponseEntity<>(playlistService.update(playlist), HttpStatus.OK);
     }
 }
