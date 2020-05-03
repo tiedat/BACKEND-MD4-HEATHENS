@@ -19,12 +19,10 @@ public class CommentSong {
     private String content;
 
     @ManyToOne
-    @JsonManagedReference
     @JoinColumn(name = "song_id", updatable = false)
     private Song song;
 
     @ManyToOne
-    @JsonManagedReference
     @JoinColumn(name = "user_id", updatable = false)
     private User user;
 
